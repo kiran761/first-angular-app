@@ -9,14 +9,29 @@ import { Product } from '../Product';
 })
 export class DataComponent {
 
-  productData :Product[]=[];
+  productData: Product[] = [];
+  duplicateProducts: Product[] = []; 
 
-  constructor(private service:DataService){
-    this.productData=service.getProducts();
-    console.log(this.productData);
+  productBorder: string = "2px solid green";
+  searchBrand: string = "";
+
+  constructor(private service: DataService) {
+    this.productData = this.service.getProducts();
+    this.duplicateProducts = [...this.productData]; 
   }
 
-  productBorder:string="2px solid green"
+  
 
-  searchBrand:string="";
+  sortProductsByPriceLowtoHigh() {
+    this.productData.sort((a, b) => a.price - b.price);
+  }
+
+  sortProductsByPriceHightoLow() {
+    this.productData.sort((a, b) => b.price - a.price);
+  }
+
+  originalOrder() {
+    this.productData = [...this.duplicateProducts];
+  
+  }
 }

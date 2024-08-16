@@ -1,24 +1,52 @@
 <p>data works!</p>
-<div class="container">
+<!-- <div class="container">
     <div *ngFor="let product of productData" class="product" [style.border]="productBorder" style="margin:10px; padding:10px ;">
         <p><strong>Product Id:</strong> {{ product.productId }}</p>
         <p><strong>Product Name:</strong> {{ product.brand }}</p>
         <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
         <p><strong>Product Price:</strong> {{ product.price }}</p>
       </div>
+</div> -->
+
+<div class="container2">
+  <div class="searchBrand">
+    Enter Text <input type="text" name="search" [(ngModel)]="searchBrand" />
+
+    <div class="sort">
+        <label>
+            <input type="radio" name="sort" id=""  (click)="originalOrder()" /> original Order 
+          </label>
+      <label>
+        <input type="radio" name="sort" id=""  (click)="sortProductsByPriceLowtoHigh()" /> Low to High in Prices 
+      </label>
+      <label>
+        <input type="radio" name="sort" id=""   (click)="sortProductsByPriceHightoLow()"/> High to Low in Prices
+      </label>
+    </div>
+
+    <div *ngFor="let product of productData">
+      <span *ngIf="product.brand == searchBrand">
+        <div class="searchProduct" [style.border]="productBorder">
+          <p><strong>Product Id:</strong> {{ product.productId }}</p>
+          <p><strong>Product Name:</strong> {{ product.brand }}</p>
+          <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
+          <p><strong>Product Price:</strong> {{ product.price }}</p>
+        </div>
+      </span>
+    </div>
+  </div>
 </div>
 
-<div class="searchBrand">
-    Enter Text<input type="text" name="search" [(ngModel)]="searchBrand">
-
-    <div *ngFor="let product of productData" >
-        <span *ngIf = "product.brand == searchBrand">
-            <div style="border : 2px solid blue ; margin:10px">
-            <p><strong>Product Id:</strong> {{ product.productId }}</p>
-            <p><strong>Product Name:</strong> {{ product.brand }}</p>
-            <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
-            <p><strong>Product Price:</strong> {{ product.price }}</p>
-        </div>
-        </span>
-    </div> 
+<div class="container">
+  <div
+    *ngFor="let product of productData"
+    class="product"
+    [style.border]="productBorder"
+    style="margin: 10px; padding: 10px"
+  >
+    <p><strong>Product Id:</strong> {{ product.productId }}</p>
+    <p><strong>Product Name:</strong> {{ product.brand }}</p>
+    <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
+    <p><strong>Product Price:</strong> {{ product.price }}</p>
   </div>
+</div>
