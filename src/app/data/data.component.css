@@ -1,5 +1,9 @@
 .container{
-    max-width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    
+    
     margin: 10px;
     font-size: 22px;
 }
+

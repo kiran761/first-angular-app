@@ -11,7 +11,6 @@ export class DataService {
 
     this.products = [
       new Product("s102", "Tata", "Dish", 10, 70),
-      new Product("s103", "UST", "WhatsApp", 14, 87),
       new Product("s104", "Apple", "iPhone", 20, 999),
       new Product("s105", "Samsung", "Galaxy", 15, 850),
       new Product("s106", "Sony", "PlayStation", 5, 499),
