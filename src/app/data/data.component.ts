@@ -17,4 +17,6 @@ export class DataComponent {
   }
 
   productBorder:string="2px solid green"
+
+  searchBrand:string="";
 }
