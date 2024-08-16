@@ -16,4 +16,5 @@ export class DataComponent {
     console.log(this.productData);
   }
 
+  productBorder:string="2px solid green"
 }
