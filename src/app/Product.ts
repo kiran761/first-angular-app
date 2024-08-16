@@ -1,4 +1,4 @@
-class Product{
+export class Product{
     productId:string ;
     brand:string;
     description:string;
