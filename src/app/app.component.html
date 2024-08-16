@@ -1,0 +1,35 @@
+<!-- 
+<div class="container" style = "border: 2px solid blue">
+      <h2>Product Data</h2>
+      <p>Product Id : {{ productId }}</p>
+      <p>Description : {{ description }}</p>
+      <p>Available : {{ available }}</p>
+      <p>In Stock : {{ instock }}</p>
+      <p>Quantity : {{ quantity }}</p>
+      <input type="text" name="orderQuantity" placeholder="Enter order quantity" [(ngModel)]="orderQuantity">
+     
+      <p>Delivery :
+        <span [style.background-color]="deliverColor">
+          &nbsp;&nbsp;&nbsp;</span>
+      </p>
+     
+      <p>
+        <button name="placeOrder" (click)="printOrder()">Place Order</button>
+      </p>
+      
+      <h1>List of products : </h1>
+      <div *ngFor="let product of products">
+        {{ product.productId }}
+        {{ product.description }}
+        {{ product.price }}
+      </div>
+
+     
+      
+</div>
+ -->
+
+
+ <div style="border: 2px solid green; margin:20px">
+  <app-color></app-color>
+</div> 
