@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     margin: 10px;
-    font-size: 22px;
+    font-size: 15px;
     border:2px solid yellowgreen
 }
 .container2{
@@ -10,7 +10,6 @@
     margin:10px;
     padding:10px;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
 }
 
 .searchProduct{
@@ -26,3 +25,5 @@
 label{
     margin:5px;
 }
+
+
