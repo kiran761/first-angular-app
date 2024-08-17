@@ -34,4 +34,11 @@ export class DataComponent {
     this.productData = [...this.duplicateProducts];
   
   }
+
+  product: Product = new Product('','','',0,0);
+  OnSubmit(): void {
+     console.log(this.product);
+     this.productData.push(this.product);
+     this.product = new Product('', '', '', 0, 0);
+  }
 }
