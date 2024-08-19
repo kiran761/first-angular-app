@@ -4,23 +4,41 @@
         <label for="">ProductId :</label>
         <input type="text" formControlName="productid">
         <br>
-        <label for="">Brand</label>
+
+        <label for="">Brand:</label>
         <input type="text" formControlName="brand">
         <br>
+
         <div formGroupName="description">
-          <label for=""> Age :</label>
-          <input type="number" formControlName="age">
-          <br>
-          <label for=""> Season :</label>
-          <input type="text" formControlName="season">
+            <label for="">Age :</label>
+            <input type="number" formControlName="age">
+            <br>
+
+            <label for="">Season :</label>
+            <input type="text" formControlName="season">
         </div>
         <br>
+
         <label for="">Quantity :</label>
         <input type="number" formControlName="qty">
         <br>
+
         <label for="">Price :</label>
         <input type="number" formControlName="price">
         <br>
+        <button type="button" (click)="addSupplier()">Add Supplier</button>
+        <br>
+
+        <div formArrayName="suppliers">
+            <div *ngFor="let supplier of suppliers.controls; let i = index">
+                <label for="supplier{{i}}">Supplier {{i + 1}}:</label>
+                <input id="supplier{{i}}" [formControlName]="i" type="text">
+                <!-- <button type="button" (click)="removeSupplier(i)">Remove</button> -->
+            </div>
+        </div>
+        <br>
+        
+
         <button type="submit" [disabled]="!productForm.valid">Submit</button>
     </form>
 </div>
