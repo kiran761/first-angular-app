@@ -1,1 +1,26 @@
-<p>formbuilder works!</p>
+<h2>Product FormBuilder</h2>
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <label for="">ProductId :</label>
+        <input type="text" formControlName="productid">
+        <br>
+        <label for="">Brand</label>
+        <input type="text" formControlName="brand">
+        <br>
+        <div formGroupName="description">
+          <label for=""> Age :</label>
+          <input type="number" formControlName="age">
+          <br>
+          <label for=""> Season :</label>
+          <input type="text" formControlName="season">
+        </div>
+        <br>
+        <label for="">Quantity :</label>
+        <input type="number" formControlName="qty">
+        <br>
+        <label for="">Price :</label>
+        <input type="number" formControlName="price">
+        <br>
+        <button type="submit" [disabled]="!productForm.valid">Submit</button>
+    </form>
+</div>
