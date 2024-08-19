@@ -39,6 +39,6 @@ export class DataComponent {
   OnSubmit(): void {
      console.log(this.product);
      this.productData.push(this.product);
-     this.product = new Product('', '', '', 0, 0);
+    // this.product = new Product('', '', '', 0, 0);
   }
 }

@@ -26,4 +26,13 @@ label{
     margin:5px;
 }
 
+.alert{
+    background-color: red;
+    border-radius: 8px;
+    margin:4px;
+    padding:10px;
+    font-size: small;
+    color:white;
+}
+
 

@@ -4,6 +4,7 @@
       class="row g-3"
       style="border: 2px solid pink; margin: 10px; padding: 10px"
     >
+
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">Product ID</label>
         <input
@@ -12,61 +13,110 @@
           [(ngModel)]="product.productId"
           name="productId"
           required
+          minlength="4"
+          #productid="ngModel"
         />
+        <div *ngIf="productid.invalid && productid.touched" class="alert">
+          <div *ngIf="productid.errors?.['required']">ProductId is required</div>
+          <div *ngIf="productid.errors?.['minlength']">
+            ProductId must be at least 4 characters
+          </div>
+        </div>
       </div>
-  
+
       <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Product Brand</label>
+        <label for="validationCustom02" class="form-label">Product Brand</label>
         <input
           type="text"
           class="form-control"
           [(ngModel)]="product.brand"
           name="brand"
           required
+          minlength="4"
+          #productbrand="ngModel"
         />
+        <div *ngIf="productbrand.invalid && productbrand.touched" class="alert">
+          <div *ngIf="productbrand.errors?.['required']">Product Brand is required</div>
+          <div *ngIf="productbrand.errors?.['minlength']">
+            Product Brand must be at least 4 characters
+          </div>
+        </div>
       </div>
+
       <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Product Desc</label>
+        <label for="validationCustom03" class="form-label">Product Desc</label>
         <input
           type="text"
           class="form-control"
           [(ngModel)]="product.description"
           name="description"
           required
+          minlength="5"
+          #productdescription="ngModel"
         />
+        <div *ngIf="productdescription.invalid && productdescription.touched" class="alert">
+          <div *ngIf="productdescription.errors?.['required']">Product Description is required</div>
+          <div *ngIf="productdescription.errors?.['minlength']">
+            Product Description must be at least 5 characters
+          </div>
+        </div>
       </div>
-  
+
       <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Product Qty</label>
+        <label for="validationCustom04" class="form-label">Product Qty</label>
         <input
           type="number"
           class="form-control"
           [(ngModel)]="product.qty"
           name="qty"
           required
+          min="1"
+          #productqty="ngModel"
         />
+        <div *ngIf="productqty.invalid && productqty.touched" class="alert">
+          <div *ngIf="productqty.errors?.['required']">Product Quantity is required</div>
+          <div *ngIf="productqty.errors?.['min']">
+            Product Quantity must be at least 1
+          </div>
+        </div>
       </div>
-  
+
       <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Product Price</label>
+        <label for="validationCustom05" class="form-label">Product Price</label>
         <input
           type="number"
           class="form-control"
           [(ngModel)]="product.price"
           name="price"
           required
+          min="0.01"
+          #productprice="ngModel"
         />
+        <div *ngIf="productprice.invalid && productprice.touched" class="alert">
+          <div *ngIf="productprice.errors?.['required']">Product Price is required</div>
+          <div *ngIf="productprice.errors?.['min']">
+            Product Price must be at least 0.01 $
+          </div>
+        </div>
       </div>
-  
+
+
       <div class="button d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button
+          type="submit"
+          [disabled]="!product.productId || !product.brand || !product.description || !product.qty || !product.price"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
       </div>
     </div>
   </form>
   
   <div class="container2">
     <div class="searchBrand">
-      Enter Brand <input type="text" name="search" [(ngModel)]="searchBrand" />
+      Enter Brand <input type="text" name="search" [(ngModel)]="searchBrand"
+       />
 
       <div class="sort">
         <label>
