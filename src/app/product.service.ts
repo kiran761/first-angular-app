@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  deleteProduct(selectedProduct : Product) {
+    let url =`http://localhost:8387/product/api/delete/${selectedProduct.productId}`
+    return this.http.delete(url);
+  }
   updateProduct(selectedProduct: Product ) {
     
     let url =`http://localhost:8387/product/api/update/${selectedProduct.productId}`

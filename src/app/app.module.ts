@@ -9,6 +9,7 @@ import { ReactiveComponent } from './reactive/reactive.component';
 import { FormbuilderComponent } from './formbuilder/formbuilder.component';
 import { TestObservableComponent } from './test-observable/test-observable.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TokenComponent } from './token/token.component';
 // import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     DataComponent,
     ReactiveComponent,
     FormbuilderComponent,
-    TestObservableComponent
+    TestObservableComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,

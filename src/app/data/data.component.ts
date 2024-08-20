@@ -79,4 +79,11 @@ loadProducts(){
   OnCancel(){
     this.visible="none"
   }
+
+  OnDelete(product : Product): void{
+    this.selectedProduct={...product}
+    this.productService.deleteProduct(this.selectedProduct).subscribe();
+    this.loadProducts();
+    this.ngOnInit()
+  }
 }
