@@ -7,6 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  updateProduct(selectedProduct: Product ) {
+    
+    let url =`http://localhost:8387/product/api/update/${selectedProduct.productId}`
+    return this.http.put(url, selectedProduct);
+  }
 
   constructor(private http: HttpClient) { }
   saveProduct(product:Product){

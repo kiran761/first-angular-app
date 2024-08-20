@@ -14,6 +14,7 @@ export class DataComponent implements OnInit{
 
   productData: Product[] = [];
   duplicateProducts: Product[] = []; 
+  visible="none"
 
   productBorder: string = "2px solid green";
   searchBrand: string = "";
@@ -23,7 +24,7 @@ export class DataComponent implements OnInit{
     this.duplicateProducts = [...this.productData]; 
   }
 
-  
+ 
 
   sortProductsByPriceLowtoHigh() {
     this.productData.sort((a, b) => a.price - b.price);
@@ -55,7 +56,27 @@ loadProducts(){
      console.log(this.product);
      this.productData.push(this.product);
      this.productService.saveProduct(this.product).subscribe();
-     this.loadProducts();
+     this.ngOnInit();
      this.product = new Product('', '', '', 0, 0);
+  }
+
+  selectedProduct : Product | null=null
+  onEdit(product : Product): void{
+    this.visible="block"
+    this.selectedProduct={...product}
+    console.log(this.selectedProduct)
+  }
+
+  OnUpdate(){
+    if(this.selectedProduct){
+    this.productService.updateProduct(this.selectedProduct).subscribe();
+    this.loadProducts();
+    this.OnCancel()
+    this.ngOnInit()
+    }
+  
+  }
+  OnCancel(){
+    this.visible="none"
   }
 }
