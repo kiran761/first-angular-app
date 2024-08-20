@@ -7,6 +7,8 @@ import { ColorComponent } from './color/color.component';
 import { DataComponent } from './data/data.component';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { FormbuilderComponent } from './formbuilder/formbuilder.component';
+import { TestObservableComponent } from './test-observable/test-observable.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
@@ -15,12 +17,14 @@ import { FormbuilderComponent } from './formbuilder/formbuilder.component';
     ColorComponent,
     DataComponent,
     ReactiveComponent,
-    FormbuilderComponent
+    FormbuilderComponent,
+    TestObservableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,16 +12,10 @@
           class="form-control"
           [(ngModel)]="product.productId"
           name="productId"
-          required
+
           minlength="4"
           #productid="ngModel"
         />
-        <div *ngIf="productid.invalid && productid.touched" class="alert">
-          <div *ngIf="productid.errors?.['required']">ProductId is required</div>
-          <div *ngIf="productid.errors?.['minlength']">
-            ProductId must be at least 4 characters
-          </div>
-        </div>
       </div>
 
       <div class="col-md-4">
@@ -104,12 +98,15 @@
       <div class="button d-flex justify-content-center">
         <button
           type="submit"
-          [disabled]="!product.productId || !product.brand || !product.description || !product.qty || !product.price"
+          [disabled]="!product.brand || !product.description || !product.qty || !product.price"
           class="btn btn-primary"
+          (click)="OnSubmit()"
         >
           Submit
         </button>
       </div>
+
+      
     </div>
   </form>
   
@@ -174,11 +171,14 @@
       [style.border]="productBorder"
       style="margin: 10px; padding: 10px"
     >
-      <p><strong>Product Id:</strong> {{ product.productId | titlecase }}</p>
+      <p><strong>Product Id:</strong> {{ product.productId }}</p>
       <p><strong>Product Brand:</strong> {{ product.brand }}</p>
       <p><strong>Product Desc:</strong> {{ product.description }}</p>
       <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
       <p><strong>Product Price:</strong> {{ product.price | currency }}</p>
+      <div class="button d-flex justify-content-center">
+        <button type="submit" class="btn btn-dark">Edit</button>
+      </div>
     </div>
   </div>
 </div>
