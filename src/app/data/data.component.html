@@ -4,9 +4,6 @@
       class="row g-3"
       style="border: 2px solid pink; margin: 10px; padding: 10px"
     >
-
-     
-
       <div class="col-md-4">
         <label for="validationCustom02" class="form-label">Product Brand</label>
         <input
@@ -19,7 +16,9 @@
           #productbrand="ngModel"
         />
         <div *ngIf="productbrand.invalid && productbrand.touched" class="alert">
-          <div *ngIf="productbrand.errors?.['required']">Product Brand is required</div>
+          <div *ngIf="productbrand.errors?.['required']">
+            Product Brand is required
+          </div>
           <div *ngIf="productbrand.errors?.['minlength']">
             Product Brand must be at least 4 characters
           </div>
@@ -37,8 +36,13 @@
           minlength="5"
           #productdescription="ngModel"
         />
-        <div *ngIf="productdescription.invalid && productdescription.touched" class="alert">
-          <div *ngIf="productdescription.errors?.['required']">Product Description is required</div>
+        <div
+          *ngIf="productdescription.invalid && productdescription.touched"
+          class="alert"
+        >
+          <div *ngIf="productdescription.errors?.['required']">
+            Product Description is required
+          </div>
           <div *ngIf="productdescription.errors?.['minlength']">
             Product Description must be at least 5 characters
           </div>
@@ -57,7 +61,9 @@
           #productqty="ngModel"
         />
         <div *ngIf="productqty.invalid && productqty.touched" class="alert">
-          <div *ngIf="productqty.errors?.['required']">Product Quantity is required</div>
+          <div *ngIf="productqty.errors?.['required']">
+            Product Quantity is required
+          </div>
           <div *ngIf="productqty.errors?.['min']">
             Product Quantity must be at least 1
           </div>
@@ -76,33 +82,36 @@
           #productprice="ngModel"
         />
         <div *ngIf="productprice.invalid && productprice.touched" class="alert">
-          <div *ngIf="productprice.errors?.['required']">Product Price is required</div>
+          <div *ngIf="productprice.errors?.['required']">
+            Product Price is required
+          </div>
           <div *ngIf="productprice.errors?.['min']">
             Product Price must be at least 0.01 $
           </div>
         </div>
       </div>
 
-
       <div class="button d-flex justify-content-center">
         <button
           type="submit"
-          [disabled]="!product.brand || !product.description || !product.qty || !product.price"
+          [disabled]="
+            !product.brand ||
+            !product.description ||
+            !product.qty ||
+            !product.price
+          "
           class="btn btn-primary"
           (click)="OnSubmit()"
         >
           Submit
         </button>
       </div>
-
-      
     </div>
   </form>
-  
+
   <div class="container2">
     <div class="searchBrand">
-      Enter Brand <input type="text" name="search" [(ngModel)]="searchBrand"
-       />
+      Enter Brand <input type="text" name="search" [(ngModel)]="searchBrand" />
 
       <div class="sort">
         <label>
@@ -132,9 +141,7 @@
             *ngIf="product.brand.toLowerCase() == searchBrand.toLowerCase()"
           >
             <div class="searchProduct" [style.border]="productBorder">
-              <p>
-                <strong>Product Id:</strong> {{ product.productId  }}
-              </p>
+              <p><strong>Product Id:</strong> {{ product.productId }}</p>
               <p>
                 <strong>Product Brand:</strong> {{ product.brand | uppercase }}
               </p>
@@ -153,138 +160,160 @@
     </div>
   </div>
 
-
-
-  <div class="dialogBox" tabindex="-1" role="dialog" [style.display]="visible" *ngIf="selectedProduct">
- 
-    <h2 style="display: flex;justify-content: center;"><strong>EDIT</strong></h2>
-    <div
-    class="row g-3"
-    style="border: 2px solid pink; margin: 10px; padding: 10px ;"
+  <div
+    class="dialogBox"
+    tabindex="-1"
+    role="dialog"
+    [style.display]="editVisible"
+    *ngIf="selectedProduct"
   >
-  
-    <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Product Brand</label>
-      <input
-        type="text"
-        class="form-control"
-       
-        [(ngModel)]="selectedProduct.brand"
-        name="brand"
-        required
-        minlength="4"
-        #productbrand="ngModel"
-      />
-      <div *ngIf="productbrand.invalid && productbrand.touched" class="alert">
-        <div *ngIf="productbrand.errors?.['required']">Product Brand is required</div>
-        <div *ngIf="productbrand.errors?.['minlength']">
-          Product Brand must be at least 4 characters
+    <h2 style="display: flex; justify-content: center">
+      <strong>EDIT</strong>
+    </h2>
+    <div
+      class="row g-3"
+      style="border: 2px solid pink; margin: 10px; padding: 10px"
+    >
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Product Brand</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="selectedProduct.brand"
+          name="brand"
+          required
+          minlength="4"
+          #productbrand="ngModel"
+        />
+        <div *ngIf="productbrand.invalid && productbrand.touched" class="alert">
+          <div *ngIf="productbrand.errors?.['required']">
+            Product Brand is required
+          </div>
+          <div *ngIf="productbrand.errors?.['minlength']">
+            Product Brand must be at least 4 characters
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="col-md-4">
-      <label for="validationCustom03" class="form-label">Product Desc</label>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="selectedProduct.description"
-        name="description"
-        required
-        minlength="5"
-        #productdescription="ngModel"
-      />
-      <div *ngIf="productdescription.invalid && productdescription.touched" class="alert">
-        <div *ngIf="productdescription.errors?.['required']">Product Description is required</div>
-        <div *ngIf="productdescription.errors?.['minlength']">
-          Product Description must be at least 5 characters
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-md-4">
-      <label for="validationCustom04" class="form-label">Product Qty</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="selectedProduct.qty"
-        name="qty"
-        required
-        min="1"
-        #productqty="ngModel"
-      />
-      <div *ngIf="productqty.invalid && productqty.touched" class="alert">
-        <div *ngIf="productqty.errors?.['required']">Product Quantity is required</div>
-        <div *ngIf="productqty.errors?.['min']">
-          Product Quantity must be at least 1
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-md-4">
-      <label for="validationCustom05" class="form-label">Product Price</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="selectedProduct.price"
-        name="price"
-        required
-        min="0.01"
-        #productprice="ngModel"
-      />
-      <div *ngIf="productprice.invalid && productprice.touched" class="alert">
-        <div *ngIf="productprice.errors?.['required']">Product Price is required</div>
-        <div *ngIf="productprice.errors?.['min']">
-          Product Price must be at least 0.01 $
-        </div>
-      </div>
-    </div>
-  
-  
-    <div class="button d-flex justify-content-center">
-      <button
-        type="submit"
-        [disabled]="!selectedProduct.brand || !selectedProduct.description || !selectedProduct.qty || !selectedProduct.price"
-        class="btn btn-primary m-2"
-        (click)="OnUpdate()"
-      >
-        Update
-      </button>
 
-      <button
-        type="submit"
-        class="btn btn-dark m-2"
-        (click)="OnCancel()"
-        
-      >
-        Cancel
-      </button>
-    </div>
-  
-    
-  </div>
-  </div>
+      <div class="col-md-4">
+        <label for="validationCustom03" class="form-label">Product Desc</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="selectedProduct.description"
+          name="description"
+          required
+          minlength="5"
+          #productdescription="ngModel"
+        />
+        <div
+          *ngIf="productdescription.invalid && productdescription.touched"
+          class="alert"
+        >
+          <div *ngIf="productdescription.errors?.['required']">
+            Product Description is required
+          </div>
+          <div *ngIf="productdescription.errors?.['minlength']">
+            Product Description must be at least 5 characters
+          </div>
+        </div>
+      </div>
 
+      <div class="col-md-4">
+        <label for="validationCustom04" class="form-label">Product Qty</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="selectedProduct.qty"
+          name="qty"
+          required
+          min="1"
+          #productqty="ngModel"
+        />
+        <div *ngIf="productqty.invalid && productqty.touched" class="alert">
+          <div *ngIf="productqty.errors?.['required']">
+            Product Quantity is required
+          </div>
+          <div *ngIf="productqty.errors?.['min']">
+            Product Quantity must be at least 1
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustom05" class="form-label">Product Price</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="selectedProduct.price"
+          name="price"
+          required
+          min="0.01"
+          #productprice="ngModel"
+        />
+        <div *ngIf="productprice.invalid && productprice.touched" class="alert">
+          <div *ngIf="productprice.errors?.['required']">
+            Product Price is required
+          </div>
+          <div *ngIf="productprice.errors?.['min']">
+            Product Price must be at least 0.01 $
+          </div>
+        </div>
+      </div>
+
+      <div class="button d-flex justify-content-center">
+        <button
+          type="submit"
+          [disabled]="
+            !selectedProduct.brand ||
+            !selectedProduct.description ||
+            !selectedProduct.qty ||
+            !selectedProduct.price
+          "
+          class="btn btn-primary m-2"
+          (click)="OnUpdate()"
+        >
+          Update
+        </button>
+
+        <button type="submit" class="btn btn-dark m-2" (click)="OnCancel()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
     <div
       *ngFor="let product of productData"
       class="product"
       [style.border]="productBorder"
-      style="margin: 10px; padding: 10px"
+      style="margin: 10px; padding: 10px;"
     >
       <p><strong>Product Id:</strong> {{ product.productId }}</p>
       <p><strong>Product Brand:</strong> {{ product.brand }}</p>
       <p><strong>Product Desc:</strong> {{ product.description }}</p>
       <p><strong>Product Quantity:</strong> {{ product.qty }}</p>
       <p><strong>Product Price:</strong> {{ product.price | currency }}</p>
-      <div class="button d-flex justify-content-center">
-        <button type="submit" class="btn btn-dark"  (click)="onEdit(product)"  >Edit</button>
-      </div>
 
       <div class="button d-flex justify-content-center">
-        <button type="submit" class="btn btn-danger"  (click)="OnDelete(product)"  >Delete</button>
+      <div class="button d-flex justify-content-center m-2">
+        <button type="submit" class="btn btn-dark" (click)="onEdit(product)">
+          Edit
+        </button>
       </div>
+
+      <div class="button d-flex justify-content-center m-2">
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          (click)="OnDelete(product)"
+        >
+          Delete
+        </button>
+      </div>
+
+    </div>
     </div>
   </div>
 </div>

@@ -14,14 +14,20 @@ export class DataComponent implements OnInit{
 
   productData: Product[] = [];
   duplicateProducts: Product[] = []; 
-  visible="none"
+  editVisible="none"
 
   productBorder: string = "2px solid green";
   searchBrand: string = "";
 
   constructor(private service: DataService , private productService:ProductService) {
-    this.productData = this.service.getProducts();
+    this.productService.fetchAllProducts().subscribe(data =>
+ // Check what is being returned
+      this.productData = data
+    );
+        
     this.duplicateProducts = [...this.productData]; 
+    console.log(this.productData );
+    console.log("hello")
   }
 
  
@@ -43,6 +49,7 @@ export class DataComponent implements OnInit{
     this.loadProducts();
   }
 
+
 loadProducts(){
   
   this.productService.fetchAllProducts().subscribe(data=>this.productData=data);
@@ -62,7 +69,7 @@ loadProducts(){
 
   selectedProduct : Product | null=null
   onEdit(product : Product): void{
-    this.visible="block"
+    this.editVisible="block"
     this.selectedProduct={...product}
     console.log(this.selectedProduct)
   }
@@ -77,7 +84,7 @@ loadProducts(){
   
   }
   OnCancel(){
-    this.visible="none"
+    this.editVisible="none"
   }
 
   OnDelete(product : Product): void{
