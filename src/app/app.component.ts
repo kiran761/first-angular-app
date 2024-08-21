@@ -18,10 +18,8 @@ export class AppComponent {
   orderQuantity = 0;
   orderDate: Date = new Date();
 
-  // You can define the delivery color dynamically based on some condition.
   deliverColor = this.orderQuantity < this.quantity ? 'green' : 'red';
 
-  // Placeholder array of products for demonstration purposes
   products = [
     { productId: 'P001', description: 'iPhone 12', price: 999 },
     { productId: 'P002', description: 'Galaxy S21', price: 799 },
