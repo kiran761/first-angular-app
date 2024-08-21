@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+x="Reddy"
+changes(){
+  this.x="Kiran Kumar Reddy"
+}
+
+
   title = 'Kiran';
   location = 'Hyderabad';
   company = 'UST Global';

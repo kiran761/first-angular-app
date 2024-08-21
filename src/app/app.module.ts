@@ -10,6 +10,7 @@ import { FormbuilderComponent } from './formbuilder/formbuilder.component';
 import { TestObservableComponent } from './test-observable/test-observable.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenComponent } from './token/token.component';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
 // import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TokenComponent } from './token/token.component';
     ReactiveComponent,
     FormbuilderComponent,
     TestObservableComponent,
-    TokenComponent
+    TokenComponent,
+    LifecycleComponent
   ],
   imports: [
     BrowserModule,

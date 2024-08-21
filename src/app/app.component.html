@@ -35,19 +35,30 @@
 
 </div>  -->
 
-<!-- <div style="border: 2px solid rgb(239, 90, 10); margin:20px">
+ <!-- <div style="border: 2px solid rgb(239, 90, 10); margin:20px">
  
   <app-data></app-data>
-</div> -->
+</div>  -->
 
 <!-- <div style ="border: 2px solid rgb(161, 17, 228); margin:20px">
   <app-reactive></app-reactive>
 </div> -->
 
-<!-- <div style ="border: 2px solid rgb(249, 112, 0); margin:20px">
+ <!-- <div style ="border: 2px solid rgb(249, 112, 0); margin:20px">
   <app-formbuilder></app-formbuilder>
+</div>  -->
+
+<!-- <div>
+  <app-token></app-token>
 </div> -->
 
-<div>
-  <app-token></app-token>
+
+<div style="border: 2px solid pink ;">
+  <app-lifecycle [x]="x">
+    
+  </app-lifecycle>
+
+  <button class="btn " (click)="changes()">
+    Click me
+  </button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DataService } from '../data.service';
 import { Product } from '../Product';
 import { ProductService } from '../product.service';
@@ -10,18 +10,15 @@ import { Observable } from 'rxjs';
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css']
 })
-export class DataComponent implements OnInit{
+export class DataComponent implements OnInit {
 
-  productData: Product[] = [];
+ @Input() productData: Product[] = [];
   duplicateProducts: Product[] = []; 
   editVisible="none"
 
-  productBorder: string = "2px solid green";
-  searchBrand: string = "";
 
-  constructor(private service: DataService , private productService:ProductService) {
+  constructor(private datatService: DataService , private productService:ProductService) {
     this.productService.fetchAllProducts().subscribe(data =>
- // Check what is being returned
       this.productData = data
     );
         
@@ -30,7 +27,9 @@ export class DataComponent implements OnInit{
     console.log("hello")
   }
 
- 
+  productBorder: string = "2px solid green";
+  searchBrand: string = "";
+
 
   sortProductsByPriceLowtoHigh() {
     this.productData.sort((a, b) => a.price - b.price);
@@ -41,11 +40,12 @@ export class DataComponent implements OnInit{
   }
 
   originalOrder() {
-    this.productData = [...this.duplicateProducts];
+    this.loadProducts();
   
   }
 
   ngOnInit(): void {
+    
     this.loadProducts();
   }
 
@@ -58,14 +58,15 @@ loadProducts(){
 
 
 
-  product: Product = new Product('','','',0,0);
-  OnSubmit(): void {
-     console.log(this.product);
-     this.productData.push(this.product);
-     this.productService.saveProduct(this.product).subscribe();
-     this.ngOnInit();
-     this.product = new Product('', '', '', 0, 0);
-  }
+product: Product = new Product('','','',0,0);
+OnSubmit(): void {
+  this.productService.saveProduct(this.product).subscribe(() => {
+    this.loadProducts(); 
+  });
+   
+      this.product = new Product('', '', '', 0, 0);  
+}
+ 
 
   selectedProduct : Product | null=null
   onEdit(product : Product): void{
