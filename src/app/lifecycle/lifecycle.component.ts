@@ -1,15 +1,16 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-lifecycle',
   templateUrl: './lifecycle.component.html',
   styleUrls: ['./lifecycle.component.css']
 })
-export class LifecycleComponent implements OnChanges,OnInit ,DoCheck,AfterContentInit,AfterContentChecked,AfterViewChecked,AfterViewInit{
+export class LifecycleComponent implements OnChanges,OnInit ,DoCheck,AfterContentInit,AfterContentChecked,AfterViewChecked,AfterViewInit , OnDestroy{
 
   constructor(){
     console.log('Constructor implemented.');
   }
+  
   
   
 
@@ -42,4 +43,7 @@ export class LifecycleComponent implements OnChanges,OnInit ,DoCheck,AfterConten
     console.log('Method AfterViewChecked implemented.');
   }
 
+  ngOnDestroy(): void {
+   console.log('Method OnDestroy implemented.');
+  }
 }
