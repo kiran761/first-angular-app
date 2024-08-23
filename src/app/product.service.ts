@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  constructor(private http: HttpClient) { }
   deleteProduct(selectedProduct : Product) {
     let url =`http://localhost:8387/product/api/delete/${selectedProduct.productId}`
     return this.http.delete(url);
@@ -17,7 +18,7 @@ export class ProductService {
     return this.http.put(url, selectedProduct);
   }
 
-  constructor(private http: HttpClient) { }
+  
   saveProduct(product:Product){
     console.log(product);
     let url ='http://localhost:8387/product/api/add'
